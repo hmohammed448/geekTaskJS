@@ -23,7 +23,7 @@ The goal of this project is to change the color, background color, margin, paddi
 You can view the hosted version of the project [here](https://geek-task-js.vercel.app/ht/DOM_project_1.html).
 
 ### The View of Project
-![image](https://github.com/hmohammed448/geekTaskJS/assets/101665407/fb772c51-bd09-4f92-aaf5-2b1fbcd13f5b)
+![Untitled](https://github.com/hmohammed448/geekTaskJS/assets/101665407/4c59a236-b102-4864-91e7-32bfbb1d003f)
 
 To view the project locally, follow these steps:
 
