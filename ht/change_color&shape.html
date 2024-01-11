@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
+    <title>Change Color & Shape</title>
+    <style>
+        body {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 34px;
+        }
+
+        #circle {
+            border: 1px solid black;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        #circleChild {
+            width: 80%;
+            height: 80%;
+            background-color: black;
+        }
+
+        span {
+            font-size: larger;
+            font-family: 'Lemon', serif;
+            text-decoration: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="circle">
+        <div id="circleChild"></div>
+    </div>
+    <button id="chngcolor">Change Color</button>
+    <button id="chngshape">Change Shape</button>
+    <span><abbr title="Move Cursor Over Change Shape Button for continue shape changing">Hover Me</abbr></span>
+
+
+    <script src="../js/change_color&shape.js"></script>
+</body>
+
+</html>
