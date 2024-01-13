@@ -4,15 +4,19 @@ let h1Text = document.getElementsByClassName("text-white");
 let circBtn = document.getElementById("toggleBtn");
 
 
+let flag = true;
 toggleButton.addEventListener("click", (e) => {
-    bodyBg.style.backgroundColor = "#000000";
-    console.log(circBtn, e);
-})
-toggleButton.addEventListener("click", (e) => {
-    h1Text.style.color = "#FF0000";
-    console.log(circBtn, e);
-})
-toggleButton.addEventListener("click", (e) => {
-    circBtn.style.marginLeft = "calc(50px + 10px)";
-    console.log(circBtn, e);
+    if (flag == true) {
+        bodyBg.style.backgroundColor = "#000000";
+        circBtn.style.marginLeft = "60px";
+        h1Text[0].style.color = "#ffffff";
+        flag = false;
+        console.log(circBtn, e);
+    } else {
+        bodyBg.style.backgroundColor = "#ffffff";
+        circBtn.style.marginLeft = "0px";
+        h1Text[0].style.color = "#000000";
+        flag = true;
+        console.log(circBtn, e);
+    }
 })
