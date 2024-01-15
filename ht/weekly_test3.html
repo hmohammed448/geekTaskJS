@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weekly Test 3</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+        display: flex;
+        gap: 1rem;
+      }
+      .productDiv {
+        border: 5px solid rgb(185, 180, 180);
+        width: 450px;
+        text-align: center;
+      }
+      #cartDiv {
+        /* display: none; */
+        border: 5px solid rgb(123, 123, 123);
+        width: 250px;
+        text-align: center;
+      }
+      .card {
+        background-color: rgb(185, 180, 180);
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 5px;
+        padding: 0px 15px;
+        min-height: 60px;
+      }
+      .rightCard {
+        background-color: rgb(185, 180, 180);
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 5px;
+        padding: 0px 15px;
+      }
+      .btn {
+        border: 1px solid black;
+        border-radius: 15px;
+        background-color: #3b93a9;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="productDiv">
+      <h2>Products</h2>
+
+      <!-- First List -->
+      <div class="card">
+        <p>Products-1</p>
+        <p id="prod_1_price">100</p>
+        <p class="btn">
+          <i class="material-symbols-outlined"> remove </i>
+          <span id="prod_1_count">2</span>
+          <i class="material-symbols-outlined"> add </i>
+        </p>
+      </div>
+
+      <!-- Second List -->
+      <div class="card">
+        <p>Products-2</p>
+        <p id="prod_2_price">200</p>
+        <p class="btn">
+          <i class="material-symbols-outlined"> remove </i>
+          <span id="prod_2_count">3</span>
+          <i class="material-symbols-outlined"> add </i>
+        </p>
+      </div>
+
+      <!-- Third List -->
+      <div class="card">
+        <p>Products-3</p>
+        <p id="prod_3_price">300</p>
+        <p class="btn">
+          <i class="material-symbols-outlined"> remove </i>
+          <span id="prod_3_count">0</span>
+          <i class="material-symbols-outlined"> add </i>
+        </p>
+      </div>
+    </div>
+    <div id="cartDiv">
+      <h2>Cart</h2>
+      <div class="card">
+        <p>Products-1</p>
+        <span id="prod_1_value"></span>
+      </div>
+      <div class="card">
+        <p>Products-1</p>
+        <span id="prod_2_value"></span>
+      </div>
+      <div class="card">
+        <p>Products-1</p>
+        <span id="prod_3_value"></span>
+      </div>
+    </div>
+    <script>
+      // Product 1
+      const proPrice1 = document.getElementById("prod_1_price").innerText;
+      const proCount1 = document.getElementById("prod_1_count").innerText;
+
+      // Product 2
+      let proPrice2 = document.getElementById("prod_2_value").innerText;
+      let proCount2 = document.getElementById("prod_2_count").innerText;
+
+      // Product 3
+      let proPrice3 = document.getElementById("prod_3_value").innerText;
+      let proCount3 = document.getElementById("prod_3_count").innerText;
+      
+    
+      
+
+      let proAns1 = document.getElementById("prod_1_value");
+      proAns1.innerText = document.getElementById("prod_1_count").innerText + " x " + document.getElementById("prod_1_price").innerText;
+
+      let proAns2 = document.getElementById("prod_2_value");
+      proAns2.innerText = document.getElementById("prod_2_count").innerText + " x " + document.getElementById("prod_2_price").innerText;
+
+      let proAns3 = document.getElementById("prod_3_value");
+      proAns3.innerText = document.getElementById("prod_1_count").innerText + " x " + document.getElementById("prod_3_price").innerText;
+    </script>
+  </body>
+</html>
