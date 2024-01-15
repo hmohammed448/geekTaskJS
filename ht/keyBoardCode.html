@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keyboard Key Code</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column nowrap;
+      }
+      .fisrtDiv {
+        text-align: center;
+        margin-top: 30vh;
+        box-shadow: 2px 2px 10px -3px;
+        padding: 1.5rem;
+      }
+      #keyNum {
+        display: none;
+        text-align: center;
+        margin-top: 30vh;
+        box-shadow: 2px 2px 10px -3px black;
+        padding: 1.5rem;
+      }
+      p, span {
+        font-family: 'Roboto', sans-serif;
+        font-size: 3rem;
+        font-weight: 700;
+        text-shadow: 2px 2px #d2d0d0fc;
+        display: inline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fisrtDiv">
+      <p>Press Any Keyboard Key </p><span id="keyNaam" style="color: rgb(13, 146, 84)"></span>
+    </div>
+    <p id="keyNum" style="color: rgb(13, 146, 84); font-size: 4rem; margin-top: 2rem;"></p>
+    <script>
+      document.addEventListener("keydown", (e) => {
+
+        // Update keyName in DOM
+        document.querySelector("div > p").innerText = "You Pressed ";
+        let keyName = document.getElementById("keyNaam");
+        keyName.innerText = e.key;
+
+        // Update Key Code
+        let keyCode = document.getElementById("keyNum");
+        keyCode.innerText = e.keyCode;
+        keyCode.style.display = "block";    
+      });
+    </script>
+  </body>
+</html>
