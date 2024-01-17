@@ -1,11 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sticky Notes</title>
-</head>
-<body>
-    
-</body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Roboto", sans-serif;
+      }
+      .inputSide {
+        background-color: #d1dce7;
+        width: 50%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column nowrap;
+        padding: 0 3rem;
+      }
+      #inputArea {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+      }
+      textarea {
+        width: 60% !important;
+        box-shadow: 4px 4px 10px 0px #803636;
+        border-radius: 5px;
+        padding: 15px;
+      }
+      .divChildBox {
+        border: none;
+        height: 100px;
+        max-height: 250px;
+        width: 250px;
+        max-width: 300px;
+        background-color: aqua;
+        padding: 5px;
+        color: #fff;
+        text-align: left;
+        overflow-y: scroll;
+      }
+      .divChildBox::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      .divChildBox::-webkit-scrollbar-track {
+        display: none;
+      }
+      #notesEle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        flex-flow: row wrap;
+      }
+      #btn {
+        width: 160px;
+        margin: 20px;
+        height: 55px;
+        border-radius: 50px;
+        background-size: 300% 100%;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        background-image: linear-gradient(
+          to right,
+          #e55d87 0%,
+          #5fc3e4 51%,
+          #e55d87 100%
+        );
+        text-align: center;
+        transition: 0.5s;
+        color: white;
+        border: none;
+        margin-left: -45%;
+      }
+
+      #btn:hover {
+        background-position: right center; /* change the direction of the change here */
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .outputSide {
+        text-align: center;
+        width: 50vw;
+        padding: 2rem;
+      }
+
+      @media screen and (min-width: 480px) {
+        body {
+          display: flex;
+          flex-flow: row nowrap;
+        }
+      }
+      @media screen and (max-width: 479px) {
+        body {
+          flex-flow: column nowrap;
+        }
+        .inputSide {
+          text-align: center;
+          width: 100vw;
+        }
+        .outputSide {
+          text-align: center;
+          width: 100vw;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Left Input pan -->
+    <div class="inputSide">
+      <div id="inputArea">
+        <textarea
+          name=""
+          id="textPicker"
+          cols="30"
+          rows="10"
+          placeholder="// Write a note here"
+        ></textarea>
+        <input type="color" name="" id="colorPicker" value="#907ee7" />
+      </div>
+      <button id="btn">Add Note</button>
+    </div>
+
+    <!-- Right Output Pan -->
+    <div class="outputSide">
+      <h2>Your Notes</h2>
+      <div id="notesEle"></div>
+      <p id="blankP">You have not added a note yet.</p>
+    </div>
+    <script src="../js/sticky_notes.js"></script>
+  </body>
 </html>
