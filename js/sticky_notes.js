@@ -5,6 +5,9 @@ let color = document.getElementById("colorPicker");
 
 let parentEle = document.getElementById("notesEle");
 let trigger = document.getElementById("btn");
+
+// setTimeout(newChildPanel, 5000);
+
 trigger.addEventListener("click", (e) => {
     if (textArea.value === "") {
         alert("Enter Some Text");
@@ -20,5 +23,5 @@ trigger.addEventListener("click", (e) => {
 
     parentEle.appendChild(childEle);
     textArea.value = "";
-})
+});
 
