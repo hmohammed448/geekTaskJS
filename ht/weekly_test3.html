@@ -26,7 +26,7 @@
         width: 450px;
         text-align: center;
       }
-      #cartDiv {
+      #rigthSide {
         /* display: none; */
         border: 5px solid rgb(123, 123, 123);
         width: 250px;
@@ -72,9 +72,9 @@
         <p>Products-1</p>
         <p id="prod_1_price">100</p>
         <p class="btn">
-          <i class="material-symbols-outlined"> remove </i>
-          <span id="prod_1_count">2</span>
-          <i class="material-symbols-outlined"> add </i>
+          <i class="material-symbols-outlined" id="iRemove1"> remove </i>
+          <span id="prod_1_count">0</span>
+          <i class="material-symbols-outlined" id="iAdd1"> add </i>
         </p>
       </div>
 
@@ -83,9 +83,9 @@
         <p>Products-2</p>
         <p id="prod_2_price">200</p>
         <p class="btn">
-          <i class="material-symbols-outlined"> remove </i>
-          <span id="prod_2_count">3</span>
-          <i class="material-symbols-outlined"> add </i>
+          <i class="material-symbols-outlined" id="iRemove2"> remove </i>
+          <span id="prod_2_count">0</span>
+          <i class="material-symbols-outlined" id="iAdd2"> add </i>
         </p>
       </div>
 
@@ -94,15 +94,24 @@
         <p>Products-3</p>
         <p id="prod_3_price">300</p>
         <p class="btn">
-          <i class="material-symbols-outlined"> remove </i>
+          <i class="material-symbols-outlined" id="iRemove3"> remove </i>
           <span id="prod_3_count">0</span>
-          <i class="material-symbols-outlined"> add </i>
+          <i class="material-symbols-outlined" id="iAdd3"> add </i>
         </p>
       </div>
     </div>
-    <div id="cartDiv">
+
+
+    <!-- Output side -->
+    <div id="rigthSide">
       <h2>Cart</h2>
-      <div class="card">
+      <div class="cartDiv">
+        
+      </div>
+
+
+
+      <!-- <div class="card">
         <p>Products-1</p>
         <span id="prod_1_value"></span>
       </div>
@@ -113,32 +122,8 @@
       <div class="card">
         <p>Products-1</p>
         <span id="prod_3_value"></span>
-      </div>
+      </div> -->
     </div>
-    <script>
-      // Product 1
-      const proPrice1 = document.getElementById("prod_1_price").innerText;
-      const proCount1 = document.getElementById("prod_1_count").innerText;
-
-      // Product 2
-      let proPrice2 = document.getElementById("prod_2_value").innerText;
-      let proCount2 = document.getElementById("prod_2_count").innerText;
-
-      // Product 3
-      let proPrice3 = document.getElementById("prod_3_value").innerText;
-      let proCount3 = document.getElementById("prod_3_count").innerText;
-      
-    
-      
-
-      let proAns1 = document.getElementById("prod_1_value");
-      proAns1.innerText = document.getElementById("prod_1_count").innerText + " x " + document.getElementById("prod_1_price").innerText;
-
-      let proAns2 = document.getElementById("prod_2_value");
-      proAns2.innerText = document.getElementById("prod_2_count").innerText + " x " + document.getElementById("prod_2_price").innerText;
-
-      let proAns3 = document.getElementById("prod_3_value");
-      proAns3.innerText = document.getElementById("prod_1_count").innerText + " x " + document.getElementById("prod_3_price").innerText;
-    </script>
+    <script src="../js/weekly_test3.js"></script>
   </body>
 </html>
