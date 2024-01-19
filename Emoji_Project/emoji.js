@@ -20,7 +20,7 @@ function displayResult() {
 
         // // Set innerText for td elements
         newTd1.innerText = e.emoji;
-        newTd1.style.width = "100px";
+        newTd1.style.width = "200px";
         newTd2.innerText = printString;
         newTd3.innerText = e.description;
 
@@ -33,7 +33,7 @@ function displayResult() {
         tab.appendChild(newRow);
 
 
-        
+
     })
 
 
