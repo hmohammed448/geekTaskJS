@@ -42,11 +42,17 @@
         border-style: solid;
         border-color: transparent;
       }
+      tr{
+        border-bottom: 1px solid grey;
+      }
       td {
         padding-bottom: 0.8rem;
         font-weight: 400;
         text-transform: capitalize;
         font-size: 2rem;
+      }
+      td:first-child{
+        width: 200px;
       }
     </style>
   </head>
@@ -54,8 +60,12 @@
     <h1>Emojee - Emoji 🔍 Application</h1>
     <hr />
     <div>
-      <input type="text" value="Emojee Search" />
-      <input type="submit" class="search" />
+      <input
+        type="text"
+        placeholder="Emojee Search"
+        id="inputSearch"
+        />
+      <input type="submit" id="search" onclick="inputTriger()"/>
       <form action="">
         <table id="table"></table>
       </form>
