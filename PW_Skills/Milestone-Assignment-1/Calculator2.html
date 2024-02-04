@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        div {
+            margin-top: 3rem;
+            padding: 1rem 1.5rem;
+            display: block;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid blue;
+            border-radius: 1rem;
+            box-shadow: 10px 20px 35px -20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <label for="inp1">Enter First Value</label>
+        <input id="inp1" type="number" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+            style="width: auto;">
+        <br>
+        <label for="inp2">Enter Second Value</label>
+        <input id="inp2" type="number" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+            style="width: auto;">
+
+        <br>
+        <br>
+        <button class="btn btn-primary" type="submit" id="btnAdd">+</button>
+        <button class="btn btn-primary" type="submit" id="btnSub">-</button>
+        <button class="btn btn-primary" type="submit" id="btnMulti">*</button>
+        <button class="btn btn-primary" type="submit" id="btnDiv">/</button>
+
+        <br>
+        <hr>
+        <p>Your Result is : <span id="span">answer</span></p>
+
+    </div>
+    <script>
+        // debugger
+        let input1 = document.getElementById("inp1");
+        let input2 = document.getElementById("inp2");
+
+        let btnAdd = document.getElementById("btnAdd");
+        let btnSub = document.getElementById("btnSub");
+        let btnMulti = document.getElementById("btnMulti");
+        let btnDiv = document.getElementById("btnDiv");
+
+        let spn = document.getElementById("span");
+
+        // addition
+        const funAddition = () => {
+            let res = Number(input1.value) + Number(input2.value);
+            spn.innerText = res;
+            return res;
+        }
+        // Subtraction
+        const funSubtract = () => {
+            let res = input1.value - input2.value;
+            spn.innerText = res;
+            return res;
+        }
+        // Multiplication
+        const funMultiplication = () => {
+            let res = input1.value * input2.value;
+            spn.innerText = res;
+            return res;
+        }
+        // Divition
+        const funDivition = () => {
+            let res = input1.value / input2.value;
+            spn.innerText = res;
+            return res;
+        }
+
+
+        btnAdd.addEventListener("click", funAddition);
+        btnSub.addEventListener("click", funSubtract);
+        btnMulti.addEventListener("click", funMultiplication);
+        btnDiv.addEventListener("click", funDivition);
+
+
+    </script>
+</body>
+
+</html>
