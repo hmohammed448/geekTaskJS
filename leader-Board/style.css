@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  width: 80vw;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+h1 {
+  display: -webkit-inline-box;
+  margin: 1.5rem 3rem;
+  font-variant: small-caps;
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 1rem;
+  background: rgba(128, 128, 128, 0.362);
+  margin-bottom: 3rem !important;
+}
+.main_form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-flow: row wrap;
+}
+input {
+  all: unset;
+  border: 1px solid lightblue;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: left;
+}
+
+input:focus {
+  border: 1px solid lightblue;
+}
+button:not(.main_form-submit-btn) {
+  background: lightblue;
+  border: none;
+  padding: 0.3rem;
+  border-radius: 50%;
+  font-size: 1rem !important;
+  padding: 13px 15px;
+  cursor: pointer;
+}
+.main_form-submit-btn {
+  background: lightblue;
+  border: 2px solid rgba(155, 154, 154, 0.422);
+  border-radius: 5px;
+  padding: 5px;
+  width: 200px;
+  text-align: left;
+  padding-left: 1rem;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 50px;
+  background-color: grey;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-size: 10px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: -30px;
+  left: 0px;
+  padding: 4px;
+  transition: all 0.01s ease-in;
+}
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.main_wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.main_wrapper-box {
+  background: #d9f6ec;
+  display: flex;
+  justify-content: space-around;
+  gap: 0.5rem;
+  padding: 1.5rem 1rem;
+  border-radius: 10px;
+  align-items: center;
+}
+.main_wrapper-content {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 30%;
+}
+#first-p {
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: left;
+  /* font-variant: small-caps; */
+  font-family: "Quicksand", sans-serif !important;
+}
+#second-p {
+  font-size: 0.7rem;
+  font-weight: 500;
+  font-family: "Quicksand", sans-serif;
+  text-align: left;
+}
+.main_wrapper-content2,
+.main_wrapper-content4 {
+  text-align: left;
+  text-transform: uppercase;
+}
+.main_wrapper-content3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  /* border: 1px solid red; */
+  border-radius: 15px;
+  padding: 10px;
+}
+.main-form-error {
+  display: none;
+  color: #df0201;
+  font-weight: 600;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Media Query */
+@media screen and (max-width: 478px) {
+  body {
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    width: 90vw;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .main_form {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-flow: row wrap;
+  }
+  input {
+    width: calc(100% / 5);
+    font-size: 10px;
+  }
+  .main_wrapper-box {
+    flex-flow: row wrap;
+    padding: 1rem .5rem;
+  }
+  .main_wrapper-content {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+  #first-p {
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  #second-p {
+    font-size: 0.5rem;
+    font-weight: 400;
+  }
+  .main_wrapper-content3 {
+    gap: 0.5rem;
+    padding: 8px;
+  }
+  button:not(.main_form-submit-btn) {
+    padding: 0.115rem;
+    font-size: 0.8rem !important;
+    padding: 10px 12px;
+  }
+  .main_form-submit-btn{
+    width: 100% !important;
+    text-align: center;
+  }
+}
