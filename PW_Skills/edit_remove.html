@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDIT | Remove elements | DOM</title>
+</head>
+
+<body>
+    <ul class="classUl">
+        <input type="text" id="inp" value="12">
+        <button id="btn">ADD ME</button>
+        <li>JavaScript</li>
+    </ul>
+    <script>
+        const ul = document.querySelector('.classUl');
+        let inp = document.querySelector("#inp");
+        let btn = document.querySelector("#btn");
+
+        // Function
+        function handleList(language) {
+            if (inp === "") {
+                return alert("Please Enter Language Name");
+            } else {
+                const li = document.createElement("li");
+                li.appendChild(document.createTextNode(language));
+                ul.appendChild(li);
+            }
+        }
+        // Add element to list
+        btn.addEventListener("click", (e) => {
+            handleList(inp.value);
+            inp.value = "";
+        });
+
+        // Edit Element from List
+        ul.addEventListener("click", (e) => {
+            if (!e.target.matches('li')) return;
+            e.target.contentEditable = "true";
+            e.target.style.backgroundColor = "#cde6b9";
+        })
+
+    </script>
+</body>
+
+</html>

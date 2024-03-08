@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Propogation</title>
+</head>
+
+<body>
+    <h3>There are two types event Propogation</h3>
+    1. Event Bubbling
+    2. Event Capturing
+    Also Event Trickling
+    <div id="div1">
+        <div id="div1Parent">Div 1 Parent</div>
+    </div>
+    <div id="div2">
+        <div id="div2Parent">Div 2 Parent of Div 2 Grand Parent
+            <button id="div2Child">Div2 Child</button>
+        </div>
+    </div>
+    <div id="div3">
+        <div id="div3Parent">Div3 Parent of Div3 Grand Parent
+            <button id="div3Child1">Div3 Child1</button>
+            <button id="div3Child2">Div3 Child2</button>
+            <button id="div3Child3">Div3 Child3</button>
+        </div>
+    </div>
+    <div id="div4">
+        Here are many buttons will be displayed shortly
+        <button onclick="generateBtn()">Generate</button>
+    </div>
+    <script>
+        let no = 1; // Declare the no variable outside the generateBtn() function
+
+        function generateBtn() {
+            let div4 = document.querySelector("#div4");
+
+            let idName = "btn-" + no;
+
+            let ele = document.createElement("button");
+            ele.setAttribute("id", idName);
+            ele.innerHTML = `Button ${no}`;
+            // Add the new button to the page (in div4)
+            div4.appendChild(ele);
+            ele.addEventListener("click", function (e) {
+                e.stopPropagation();
+                console.log(`Clicked : ${e.target.id}`);
+            })
+            no++; // Increment the no variable after creating the button
+        }
+
+    </script>
+</body>
+
+</html>

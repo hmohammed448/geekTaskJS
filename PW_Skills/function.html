@@ -21,17 +21,19 @@
     <button id="btnDiv">Divide</button>
     <!-- <script src="function.js"></script> -->
     <script>
-        function add(a, b) {
-            return a + b;
-        }
-        function subtract(a, b) {
-            return a - b;
-        }
-        function multiply(a, b) {
-            return a * b;
-        }
-        function divide(a, b) {
-            return a / b;
+        const calc = {
+            add: function (a, b) {
+                return a + b;
+            },
+            subtract: function (a, b) {
+                return a - b;
+            },
+            multiply: function (a, b) {
+                return a * b;
+            },
+            divide: function (a, b) {
+                return a / b;
+            }
         }
 
         let btnAdd = document.getElementById("btnAdd");
@@ -45,22 +47,36 @@
         let printAns = document.getElementById("para");
 
         // Addition
-        btnAdd.addEventListener('click', function () {
-            let sum = add(Number(input1.value), Number(input2.value));
-            printAns.innerText = sum;
-            console.log(sum);
+        btnAdd.addEventListener('click', function (e) {
+            e.stopPropagation();
+            let input1Value = Number(input1.value);
+            let input2Value = Number(input2.value);
+            printAns.innerText = calc.add(input1Value, input2Value);
+            console.log("add", e)
         });
         // Subtraction
-        btnSub.addEventListener('click', function () {
-            printAns.innerText = subtract(Number(input1.value), Number(input2.value));
+        btnSub.addEventListener('click', function (e) {
+            e.stopPropagation();
+            let input1Value = Number(input1.value);
+            let input2Value = Number(input2.value);
+            printAns.innerText = calc.subtract(input1Value, input2Value);
+            console.log("subtract", e)
         });
         // Multiplication
-        btnMul.addEventListener('click', function () {
-            printAns.innerText = multiply(Number(input1.value), Number(input2.value));
+        btnMul.addEventListener('click', function (e) {
+            e.stopPropagation();
+            let input1Value = Number(input1.value);
+            let input2Value = Number(input2.value);
+            printAns.innerText = calc.multiply(input1Value, input2Value);
+            console.log("multiply", e)
         });
         // Dividation
-        btnDiv.addEventListener('click', function () {
-            printAns.innerText = divide(Number(input1.value), Number(input2.value));
+        btnDiv.addEventListener('click', function (e) {
+            e.stopPropagation();
+            let input1Value = Number(input1.value);
+            let input2Value = Number(input2.value);
+            printAns.innerText = calc.divide(input1Value, input2Value);
+            console.log("divide", e)
         });
     </script>
 </body>
