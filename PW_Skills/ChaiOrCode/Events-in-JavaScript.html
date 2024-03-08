@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events in JavaScript</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 1rem;
+        }
+
+        ul {
+            display: flex;
+            justify-content: space-around;
+            flex-flow: row wrap;
+            max-width: 100%;
+            gap: 1rem;
+        }
+
+        li {
+            width: calc(100% / 4);
+            border: 1px solid olivedrab;
+            max-height: 350px;
+            border-radius: 15px;
+            position: relative;
+            list-style: none;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+        }
+
+        span {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            border: 1px solid;
+            border-radius: 50%;
+            padding: 2px 5px;
+            color: wheat;
+            background-color: rgba(0, 0, 0, .6);
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Amazing Image</h2>
+    <ul id="images">
+        <li><span id="imgId1">X</span><img
+                src="https://images.pexels.com/photos/20419174/pexels-photo-20419174/free-photo-of-flower-and-crystals-by-wheel-of-year.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                alt=""></li>
+        <li><span>X</span><img
+                src="https://images.pexels.com/photos/20240436/pexels-photo-20240436/free-photo-of-a-woman-in-a-pink-robe-and-white-pants-standing-in-the-desert.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                alt="" id="imgId2"></li>
+        <li><span id="imgId3">X</span><img
+                src="https://images.pexels.com/photos/9799882/pexels-photo-9799882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                alt=""></li>
+        <li><span id="imgId4">X</span><img
+                src="https://images.pexels.com/photos/20498975/pexels-photo-20498975/free-photo-of-mongolian-girl.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                alt=""></li>
+        <li><span id="imgId5">X</span><img
+                src="https://images.pexels.com/photos/15047354/pexels-photo-15047354/free-photo-of-potted-plants-near-the-wooden-bench.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                alt=""></li>
+        <li><span id="imgId6">X</span><img
+                src="https://images.pexels.com/photos/20427519/pexels-photo-20427519/free-photo-of-a-woman-with-red-hair-in-a-cherry-tree.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                alt=""></li>
+        <li><span id="imgId7">X</span><img
+                src="https://images.pexels.com/photos/13562843/pexels-photo-13562843.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                alt=""></li>
+        <li><a href="www.google.com">GOOGLE</a></li>
+    </ul>
+    <script src="./eventsinJS.js"></script>
+</body>
+
+</html>
