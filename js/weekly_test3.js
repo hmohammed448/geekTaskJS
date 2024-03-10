@@ -1,6 +1,9 @@
 // Product 1
 const proPrice1 = document.getElementById("prod_1_price");
-// const proCount1 = document.getElementById("prod_1_count");
+
+let cartDiv = document.querySelector("#cartDiv");
+
+let productsList = [];
 
 // Universal btn
 let btns = document.querySelectorAll(".btn");
@@ -10,7 +13,7 @@ btns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     // Find the parent card element for the clicked button
     let card = e.target.closest(".card");
-    console.log(card);
+    // console.log(card);
     // Find the span element inside the card for the count
     let spanNum = card.querySelector("span");
 
@@ -22,6 +25,23 @@ btns.forEach((btn) => {
       num--;
     } else if (e.target.textContent.trim() === "add") {
       num++;
+
+      // Get product information
+      let productName = card.querySelector(".prodName").textContent;
+      let productQ = card.querySelector("span").textContent;
+      let productQty = parseInt(card.querySelector("span").textContent);
+      let productP = card.querySelector(".price").textContent;
+      let productPrice = parseInt(card.querySelector(".price").textContent);
+
+      // Add product to the products list
+      productsList.push({
+        naam: productName,
+        quantity: productQty,
+        price: productPrice,
+      });
+
+      // Update cart display
+      renderCart();
     }
 
     // Update the text content of the spanNum
@@ -35,3 +55,20 @@ btns.forEach((btn) => {
     }
   });
 });
+
+// Function to render the cart display
+function renderCart() {
+  // Clear existing cart content
+  cartDiv.innerHTML = "";
+
+  // Iterate over productsList and add each product to the cart display
+  productsList.forEach((product, index) => {
+    let cartItem = document.createElement("div");
+    cartItem.classList.add("card");
+    cartItem.innerHTML = `
+      <p>${product.naam}</p>
+      <p>${product.quantity}</p> x <span>${product.price}</span>
+    `;
+    cartDiv.appendChild(cartItem);
+  });
+}
