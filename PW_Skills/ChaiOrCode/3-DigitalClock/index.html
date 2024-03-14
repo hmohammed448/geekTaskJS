@@ -164,12 +164,19 @@
 
     setInterval(function () {
         let currentTime = new Date();
-        // Format the date to show day
+
         // clock.innerHTML = currentTime.toLocaleTimeString('en-US');
         // Get hours, minutes and seconds from the time object
-        let hours = currentTime.getHours().toString().padStart(2, "0");
+        let hours = currentTime.toLocaleTimeString('en-US').slice(0, 2);
+        if (hours > 9 && hours <= 12) {
+            hours = currentTime.toLocaleTimeString('en-US').slice(0, 2);
+        } else {
+            hours = currentTime.toLocaleTimeString('en-US').slice(0, 1);
+        }
+
         let minutes = currentTime.getMinutes().toString().padStart(2, "0");
         let seconds = currentTime.getSeconds().toString().padStart(2, "0");
+        console.log("Hours : ", hours, "min : ", minutes, "sec : ", seconds);
         // Handle the AM/PM switch
         let AMPM = "AM";
         if (currentTime.getHours() > 11 && currentTime.getHours() <= 23) {
@@ -183,7 +190,7 @@
         minute.textContent = minutes;
         sec.textContent = seconds;
         amPm.textContent = AMPM;
-    }, 100);
+    }, 1000);
 </script>
 
 </html>
