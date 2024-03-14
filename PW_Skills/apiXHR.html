@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request</title>
+</head>
+
+<body>
+    <h1>API Request Syntax</h1>
+    <div class="img" style="width:100px; height:100px; border: 1px solid; display:flex; border-radius:50%;">
+        <img src="/static/api_request.png" alt="API Request Image">
+    </div>
+    <p></p>
+    <label for="name"></label>
+</body>
+<script>
+    const requestUrl = "https://randomuser.me/api/";
+    const data = new XMLHttpRequest();
+
+    data.open("GET", requestUrl);
+    data.onreadystatechange = function () {
+        if (this.readyState === 4) {
+            const userData = JSON.parse(this.responseText);
+            console.log(userData);
+            document.querySelector(
+                "p"
+            ).textContent = `Hello ${userData.results[0].name.title} ${userData.results[0].name.first} ${userData.results[0].name.last}`;
+            document.querySelector(
+                ".img"
+            ).innerHTML = `<img src="${userData.results[0].picture.large}" alt="" style="width: 100%;
+        border-radius: 50%;">`;
+
+            if (userData.results[0].registered.age > 10) {
+                document.querySelector(
+                    "label"
+                ).innerHTML = `${userData.results[0].phone}`;
+            }
+            console.log(userData.results[0].registered.age);
+        }
+    };
+    data.send();
+
+
+</script>
+
+</html>
