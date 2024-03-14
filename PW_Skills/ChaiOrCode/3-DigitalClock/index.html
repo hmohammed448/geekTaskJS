@@ -8,46 +8,182 @@
     <title>Your Local Time</title>
     <style>
         body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .image {
             background-color: #212121;
             color: #fff;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            justify-content: center;
+            background: url(https://images.unsplash.com/photo-1499002238440-d264edd596ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
+            background-size: cover;
+            overflow: hidden;
+            opacity: 0.88;
+
+        }
+
+        h2 {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 14px;
+            text-align: center;
+            color: white;
+            background: black;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
         }
 
         .center {
             display: flex;
-            height: 100vh;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+            padding: 1.5rem 0;
+            background-color: #faebd78a !important;
+            height: 50%;
+            width: 50%;
+            border-radius: 1rem;
+            border: 1px solid #00000038;
         }
 
+        @media screen and (max-width: 600px) {
+            #AMPM {
+                bottom: -70px !important;
+                left: -15px !important;
+            }
+
+            .center {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                padding: 1.5rem 0;
+                background-color: #faebd78a !important;
+                height: 50%;
+                width: 100vw;
+                border-radius: 1rem;
+                border: 1px solid #00000038;
+            }
+        }
+
+
+
         #clock {
-            font-size: 40px;
-            background-color: orange;
-            padding: 20px 50px;
-            margin-top: 10px;
-            border-radius: 10px;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #clock div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column nowrap;
+            position: relative;
+        }
+
+        #clock div span {
+            width: 100px;
+            height: 80px;
+            background: slateblue;
+            opacity: 0.8;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        #clock div label {
+            position: absolute;
+            bottom: -30px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            background: darkblue;
+            opacity: 0.8;
+            padding: 0.5rem 0;
+            width: -webkit-fill-available;
+            text-align: center;
+        }
+
+        #AMPM {
+            bottom: -70px !important;
+            left: -10px !important;
+            position: absolute !important;
+            width: 60px !important;
+            height: 27.5px !important;
+            font-size: 20px !important;
+            background: green !important;
         }
     </style>
 </head>
 
 <body>
-    <nav>
-        <a href="/" aria-current="page">Home</a>
-        <a target="_blank" href="https://www.youtube.com/@chaiaurcode">Youtube channel</a>
-    </nav>
-    <div class="center">
-        <div id="banner"><span>Your local time</span></div>
-        <div id="clock"></div>
+    <div class="image">
+
+        <div class="center">
+            <h2>DIGITAL CLOCK</h2>
+            <div id="clock">
+                <div>
+                    <span id="hours"></span>
+                    <label for="hours">HOURS</label>
+                </div>
+                <div>
+                    <span id="minutes"></span>
+                    <label for="minutes">MINUTES</label>
+                </div>
+                <div>
+                    <span id="seconds"></span>
+                    <label for="seconds">SECONDS</label>
+                </div>
+                <div>
+                    <span id="AMPM"></span>
+                </div>
+            </div>
+        </div>
     </div>
-    <script>
-        const clock = document.getElementById("clock");
-        setInterval(function () {
-            let currentTime = new Date();
-            // console.log(currentTime.toLocaleTimeString('en-US'));
-            // Format the date to show day
-            clock.innerHTML = currentTime.toLocaleTimeString('en-US');
-        }, 1000);
-    </script>
+
 </body>
+<script>
+    const clock = document.getElementById("clock");
+
+    let hour = document.querySelector("#hours"),
+        minute = document.querySelector('#minutes'),
+        sec = document.querySelector('#seconds'),
+        amPm = document.querySelector('#AMPM');
+
+    setInterval(function () {
+        let currentTime = new Date();
+        // Format the date to show day
+        // clock.innerHTML = currentTime.toLocaleTimeString('en-US');
+        // Get hours, minutes and seconds from the time object
+        let hours = currentTime.getHours().toString().padStart(2, "0");
+        let minutes = currentTime.getMinutes().toString().padStart(2, "0");
+        let seconds = currentTime.getSeconds().toString().padStart(2, "0");
+        // Handle the AM/PM switch
+        let AMPM = "AM";
+        if (currentTime.getHours() > 11 && currentTime.getHours() <= 23) {
+            AMPM = "PM";
+        } else {
+            AMPM = "AM";
+        }
+
+        // Update the display with the new time information
+        hour.textContent = hours;
+        minute.textContent = minutes;
+        sec.textContent = seconds;
+        amPm.textContent = AMPM;
+    }, 100);
+</script>
 
 </html>
