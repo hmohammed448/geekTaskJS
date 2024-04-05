@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            position: relative;
+        }
+
+        button {
+            border: 1px solid;
+            border-radius: 5px;
+        }
+
+        .inputDiv {
+            border: 1px solid black;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .just-center {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .inputDiv>input {
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 95%;
+        }
+
+
+        ::placeholder {
+            color: black;
+            opacity: 1;
+            /* Firefox */
+        }
+
+        ::-ms-input-placeholder {
+            /* Edge 12-18 */
+            color: black;
+        }
+
+        /* Preserve line breaks in bot message */
+        .bot-message {
+            white-space: pre-line;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            flex-flow: column nowrap;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        form {
+            position: fixed;
+            bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main-container" style="max-height: 80vh !important;">
+            <div class="user-message">User : Hello World!</div>
+            <div class="bot-message">Bot :
+                <pre>Hello user how may i help you!</pre>
+            </div>
+        </div>
+        <!-- </div> -->
+        <!-- <div class="container" id="bottomContainer" style="position: relative; background-color:gray; padding:10px; border-radius: 10px;"> -->
+        <form class="just-center" style="flex-flow: column;">
+            <div class="inputDiv just-center">
+                <input type="text" placeholder="Enter your prompt here">
+                <button id="btn-search" class="bg-black">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-white dark:text-black">
+                        <path d="M7 11L12 6L17 11M12 18V7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg></button>
+            </div>
+
+            <small style="text-align: center !important;">Gemini may display inaccurate info, so double-check its
+                responses. <a href="https://support.google.com/gemini?p=privacy_notice">Your privacy & Gemini
+                    Apps.</a></small>
+        </form>
+    </div>
+
+    <!-- BOOTSTRAP SCRIPT -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!-- GEMINI SCRIPT -->
+    <script type="importmap">
+            {
+              "imports": {
+                "@google/generative-ai": "https://esm.run/@google/generative-ai"
+              }
+            }
+        </script>
+    <script type="module">
+        // Import the GoogleGenerativeAI module directly from the CDN link
+        // import { GoogleGenerativeAI } from "https://cdn.jsdelivr.net/npm/@google/generative-ai/dist/index.js";
+
+        let mainCont = document.querySelector(".main-container");
+        let userMsg = document.querySelector(".user-message");
+        let botMsg = document.querySelector(".bot-message");
+        let btn = document.querySelector("#btn-search");
+
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+        let API_KEY = "AIzaSyBReUdGbz9sHTvxuz1us2pGw6x6TDNv4Q4";
+
+        const genAI = new GoogleGenerativeAI(API_KEY);
+
+        async function run() {
+            event.preventDefault();
+            userMsg.textContent = "User : " + document.querySelector("input").value;
+            botMsg.textContent = `Bot : typing...`;
+            const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+            let prompt = document.querySelector("input").value;
+
+            const result = await model.generateContent(prompt);
+            const response = await result.response;
+            const geminiText = await response.text();
+            botMsg.textContent = `Bot : ${geminiText.replace(/\n/g, '\n\n')}`;
+            console.log(geminiText);
+            console.log(prompt);
+            document.querySelector("input").value = "";
+        }
+        btn.addEventListener('click', run);
+    </script>
+
+</body>
+
+</html>
