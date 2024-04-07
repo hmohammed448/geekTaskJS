@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geek Pokemon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(201, 109, 109);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        #head,
+        #filters {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #filters {
+            gap: 1rem;
+        }
+
+        select,
+        #inputSearch {
+            appearance: none;
+            border: 1px solid;
+            outline: 0;
+            padding: 16px 28px;
+            background-color: transparent;
+            color: white;
+            font-weight: 300;
+            cursor: pointer;
+            padding: 16px 28px;
+            border-radius: 0.25em;
+            font-family: inherit;
+            transition: 0.4s;
+            font-size: 16px;
+        }
+
+        ::placeholder {
+            color: #fff;
+            opacity: 1;
+            /* Firefox */
+        }
+
+        ::-ms-input-placeholder {
+            /* Edge 12-18 */
+            color: #fff;
+        }
+
+        .btn {
+            padding: 16px 28px;
+            border-radius: 0.25em;
+            background: #2468b1;
+            border: none;
+            font-family: inherit;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.4s;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        #list_container,
+        .card,
+        .card-inner,
+        .imgDiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #list_container {
+            flex-flow: row wrap;
+        }
+
+        .card {
+            border: none;
+            width: 250px;
+            height: 350px;
+            margin: auto;
+            background: radial-gradient(circle at 50% 0%, rgb(0, 184, 148) 36%, rgb(255, 255, 255) 36%);
+            border-radius: 15px;
+            margin-bottom: 1rem;
+        }
+
+        .card-inner {
+            justify-content: space-evenly !important;
+            flex-flow: column nowrap;
+            max-width: 250px !important;
+            height: 100%;
+            width: 100% !important;
+        }
+
+        .imgDiv {
+            width: 100%;
+        }
+
+        .imgDiv>img {
+            max-width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="head">
+            <img src="./GeekPok-1-29-2024.png" alt="" height="200">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXc5Z3g5bDNleXJzNnMyZ2NoZDVuYWxucG12eWJwMGtwbzF3bTFmZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cRKRsUJ9enVZe/giphy.gif"
+                alt="" width="200">
+        </div>
+        <div id="filters">
+            <select name="" id="selectTag">
+                <option value="" selected disabled hidden>Choose the type...</option>
+                <option value="" id="type">Normal</option>
+                <option value="" id="type">Fighting</option>
+                <option value="" id="type">Flying</option>
+                <option value="" id="type">Poison</option>
+                <option value="" id="type">Ground</option>
+                <option value="" id="type">Rock</option>
+                <option value="" id="type">Bug</option>
+                <option value="" id="type">Ghost</option>
+                <option value="" id="type">Steel</option>
+                <option value="" id="type">Fire</option>
+                <option value="" id="type">Water</option>
+                <option value="" id="type">Grass</option>
+                <option value="" id="type">Electric</option>
+                <option value="" id="type">Psychic</option>
+                <option value="" id="type">Ice</option>
+                <option value="" id="type">Dragon</option>
+                <option value="" id="type">Dark</option>
+                <option value="" id="type">Fairy</option>
+                <option value="" id="type">Unkown</option>
+                <option value="" id="type">Shadow</option>
+            </select>
+            <button id="filterByType" class="btn">Filter By Type</button>
+            <input type="text" name="" id="inputSearch" placeholder="Search By Name...">
+            <a href="./GeekPokemon.html" class="btn">Reset</a>
+        </div>
+
+        <div id="list_container" style="padding-top: 2rem; padding-left: 2rem; padding-right:2rem;">
+        </div>
+
+    </div>
+    <script src=" pokemon.js">
+    </script>
+</body>
+
+</html>

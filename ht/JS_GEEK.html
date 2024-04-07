@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Add custom CSS styles */
+    </style>
+    <!-- Include Stripe library -->
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Expense Tracker Section -->
+    <section class="container mx-auto py-8">
+        <h1 class="text-2xl font-bold mb-4">Expense Tracker</h1>
+        <!-- Expense Input Form -->
+        <form id="expenseForm" class="mb-4">
+            <div>
+                <label for="expenseAmount">Amount:</label>
+                <input type="number" id="expenseAmount" name="amount" required>
+            </div>
+            <div>
+                <label for="expenseCategory">Category:</label>
+                <select id="expenseCategory" name="category" required>
+                    <option value="food">Food</option>
+                    <option value="transport">Transport</option>
+                    <option value="utilities">Utilities</option>
+                    <!-- Add more categories as needed -->
+                </select>
+            </div>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 mt-2 rounded">Add Expense</button>
+        </form>
+        <!-- Payment Button -->
+        <button id="showPaymentForm" class="bg-green-500 text-white px-4 py-2 mt-2 rounded">Pay</button>
+        <!-- Payment Form -->
+        <form id="paymentForm" class="mb-4 hidden">
+            <div>
+                <label for="cardElement">Credit Card:</label>
+                <div id="cardElement"></div>
+            </div>
+            <button type="submit" class="bg-green-500 text-white px-4 py-2 mt-2 rounded">Pay</button>
+        </form>
+        <!-- Expense Chart -->
+        <div style="width: 500px; height:500px; margin: auto;">
+            <canvas id="expenseChart" width="400" height="200"></canvas>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let expenseChart; // Variable to hold the chart instance
+
+            // Dummy expense data (replace with actual data)
+            let expenses = [
+                { category: 'food', amount: 100 },
+                { category: 'transport', amount: 50 },
+                { category: 'utilities', amount: 80 },
+                // Add more expense objects as needed
+            ];
+
+            // Function to render or update the expense chart
+            function renderExpenseChart() {
+                const ctx = document.getElementById('expenseChart').getContext('2d');
+                if (expenseChart) {
+                    // If chart exists, update its data
+                    expenseChart.data.labels = [...new Set(expenses.map(expense => expense.category))];
+                    expenseChart.data.datasets[0].data = expenseChart.data.labels.map(category =>
+                        expenses.filter(expense => expense.category === category).reduce((total, expense) => total + expense.amount, 0)
+                    );
+                    expenseChart.update();
+                } else {
+                    // If chart doesn't exist, create a new one
+                expenseChart = new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: [...new Set(expenses.map(expense => expense.category))],
+                datasets: [{
+                                label: 'Expense Breakdown',
+                                data: [...new Set(expenses.map(expense => expense.category))].map(category =>
+                                    expenses.filter(expense => expense.category === category).reduce((total, expense) => total + expense.amount, 0)
+                                ),
+                                backgroundColor: [
+                                    '#FF6384',
+                                    '#36A2EB',
+                                    '#FFCE56',
+                                    // Add more colors as needed
+                                ]
+                            }]
+                        }
+                    });
+                }
+            }
+
+            // Render initial chart
+            renderExpenseChart();
+
+            // Form submission event listener
+            document.getElementById('expenseForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+                const amount = parseFloat(document.getElementById('expenseAmount').value);
+                const category = document.getElementById('expenseCategory').value;
+                if (!isNaN(amount) && amount > 0) {
+                    // Add the new expense to the expenses array
+                    expenses.push({ category, amount });
+                    // Render or update the chart
+                    renderExpenseChart();
+                    // Reset form
+                    event.target.reset();
+                } else {
+                    alert('Please enter a valid amount.');
+                }
+            });
+
+            // Initialize Stripe and create card element
+            const stripe = Stripe('YOUR_PUBLISHABLE_KEY'); // Replace with your publishable key
+            const elements = stripe.elements();
+            const cardElement = elements.create('card');
+
+            cardElement.mount('#cardElement');
+
+            // Show/hide payment form
+            document.getElementById('showPaymentForm').addEventListener('click', function () {
+                document.getElementById('paymentForm').classList.remove('hidden');
+                document.getElementById('expenseForm').classList.add('hidden');
+                document.getElementById('showPaymentForm').classList.add('hidden');
+            });
+
+            // Payment form submission event listener
+            document.getElementById('paymentForm').addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                const { token, error } = await stripe.createToken(cardElement);
+
+                if (error) {
+                    console.error('Error:', error);
+                } else {
+                    const paymentForm = document.getElementById('paymentForm');
+                    const formData = new FormData(paymentForm);
+                    formData.append('token', token.id);
+
+                    // Send the payment data to your server for processing
+                    fetch('/process-payment', {
+                        method: 'POST',
+                        body: formData,
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                // Payment successful, show a success message
+                                alert('Payment successful!');
+                                // Reset form
+                                paymentForm.reset();
+                                // Hide payment form
+                                paymentForm.classList.add('hidden');
+                                // Show expense form
+                                document.getElementById('expenseForm').classList.remove('hidden');
+                                // Show payment button
+                                document.getElementById('showPaymentForm').classList.remove('hidden');
+                            } else {
+                                console.error('Error:', data.message);
+                                alert('Payment failed. Please try again.');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('Payment failed. Please try again.');
+                        });
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

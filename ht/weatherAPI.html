@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather API</title>
+</head>
+
+<body>
+    <input type="text" id="inputText">
+    <button class="btnSearch">Search</button>
+    <script>
+        let cityName = document.querySelector("#inputText");
+        let btnSearch = document.querySelector(".btnSearch");
+
+        btnSearch.addEventListener("click", fetchData);
+        let API_KEY = "976eb048a165c0098e911a831e555df0";
+
+        async function fetchData() {
+            console.log(cityName.value);
+            if (cityName.value == "") return alert('Input field is empty');
+            try{
+                let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName.value}&appid=${API_KEY}`);
+                let data = await response.json();
+                console.log(data);
+            }catch(err){
+                console.log("Error: "+ err);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
