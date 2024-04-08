@@ -1,6 +1,7 @@
 let list = document.querySelector("#list_container");
 let filterByTypeBtn = document.querySelector("#filterByType");
 let inputSearchField = document.querySelector("#inputSearch");
+let selectType = document.querySelector("#selectTag");
 
 const typeColor = {
   bug: "#26de81",
@@ -90,19 +91,35 @@ function hex2RGB(hex) {
   return colour;
 }
 
-inputSearchField.addEventListener("input", (e) => {
-
+inputSearchField.addEventListener("keyup", (e) => {
   let filter = document.getElementsByClassName("card");
-  let inputValue = e.target.value.toLowerCase();
 
   let pokeArray = Array.from(filter);
-  pokeArray.forEach((ele)=>{
-    let pokeName = ele.children[0].children[2].innerHTML;
-    if(pokeName.includes(inputValue)){
-      ele.style.display="block";
-    }else{
-      ele.style.display="none";
+  pokeArray.forEach((ele) => {
+    let pokeName = ele.children[0].children[2].innerText.toLowerCase();
+    if (pokeName.startsWith(inputSearchField.value.toLowerCase())) {
+      ele.style.display = "block";
+    } else {
+      ele.style.display = "none";
     }
-    // console.log(pokeName);
   });
 });
+
+filterByTypeBtn.addEventListener("click", (e) => {
+  let filterType = document.getElementsByClassName("card");
+
+  let pokeArray = Array.from(filterType);
+  pokeArray.forEach((ele) => {
+    let pokeType = ele.children[0].children[3].innerText.toLowerCase();
+    if (pokeType == selectType.value.toLowerCase()) {
+      ele.style.display = "block";
+    } else {
+      ele.style.display = "none";
+    }
+  });
+
+});
+
+// selectType.addEventListener("change", (e) => {
+//   // filterByTypeBtn.click();
+// });

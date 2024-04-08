@@ -128,6 +128,7 @@
                 font-size: 12px;
                 font-weight: 500;
             }
+
             .card {
                 border: none;
                 width: 180px;
@@ -136,7 +137,8 @@
                 border-radius: 15px;
                 margin-bottom: 1rem;
             }
-            #head img{
+
+            #head img {
                 max-width: 150px;
                 height: auto;
                 display: flex;
@@ -158,40 +160,37 @@
                 alt="" width="200">
         </div>
         <div id="filters">
-            <select name="" id="selectTag">
+            <select id="selectTag">
                 <option value="" selected disabled hidden>Choose the type...</option>
-                <option value="" id="type">Normal</option>
-                <option value="" id="type">Fighting</option>
-                <option value="" id="type">Flying</option>
-                <option value="" id="type">Poison</option>
-                <option value="" id="type">Ground</option>
-                <option value="" id="type">Rock</option>
-                <option value="" id="type">Bug</option>
-                <option value="" id="type">Ghost</option>
-                <option value="" id="type">Steel</option>
-                <option value="" id="type">Fire</option>
-                <option value="" id="type">Water</option>
-                <option value="" id="type">Grass</option>
-                <option value="" id="type">Electric</option>
-                <option value="" id="type">Psychic</option>
-                <option value="" id="type">Ice</option>
-                <option value="" id="type">Dragon</option>
-                <option value="" id="type">Dark</option>
-                <option value="" id="type">Fairy</option>
-                <option value="" id="type">Unkown</option>
-                <option value="" id="type">Shadow</option>
+                <option value="Normal">Normal</option>
+                <option value="Fighting">Fighting</option>
+                <option value="Flying">Flying</option>
+                <option value="Poison">Poison</option>
+                <option value="Ground">Ground</option>
+                <option value="Rock">Rock</option>
+                <option value="Bug">Bug</option>
+                <option value="Ghost">Ghost</option>
+                <option value="Steel">Steel</option>
+                <option value="Fire">Fire</option>
+                <option value="Water">Water</option>
+                <option value="Grass">Grass</option>
+                <option value="Electric">Electric</option>
+                <option value="Psychic">Psychic</option>
+                <option value="Ice">Ice</option>
+                <option value="Dragon">Dragon</option>
+                <option value="Dark">Dark</option>
+                <option value="Fairy">Fairy</option>
+                <option value="Unkown">Unkown</option>
+                <option value="Shadow">Shadow</option>
             </select>
             <button id="filterByType" class="btn">Filter By Type</button>
             <input type="text" name="" id="inputSearch" placeholder="Search By Name...">
             <a href="./GeekPokemon.html" class="btn">Reset</a>
         </div>
-
         <div id="list_container" style="padding-top: 2rem; padding-left: 2rem; padding-right:2rem;">
         </div>
-
     </div>
     <script src="./pokemon.js">
     </script>
 </body>
-
 </html>
