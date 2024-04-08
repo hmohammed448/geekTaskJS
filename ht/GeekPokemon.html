@@ -22,6 +22,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-flow: row wrap;
         }
 
         #filters {
@@ -89,7 +90,6 @@
             width: 250px;
             height: 350px;
             margin: auto;
-            background: radial-gradient(circle at 50% 0%, rgb(0, 184, 148) 36%, rgb(255, 255, 255) 36%);
             border-radius: 15px;
             margin-bottom: 1rem;
         }
@@ -108,6 +108,43 @@
 
         .imgDiv>img {
             max-width: 100px;
+        }
+
+        .types {
+            padding: 0.25rem 0.5rem;
+            border-radius: 50px;
+        }
+
+        @media screen and (max-width:640px) {
+
+            select,
+            #inputSearch {
+                padding: 10px 15px;
+                font-size: 12px;
+            }
+
+            .btn {
+                padding: 10px 15px;
+                font-size: 12px;
+                font-weight: 500;
+            }
+            .card {
+                border: none;
+                width: 180px;
+                height: 280px;
+                margin: auto;
+                border-radius: 15px;
+                margin-bottom: 1rem;
+            }
+            #head img{
+                max-width: 150px;
+                height: auto;
+                display: flex;
+                justify-content: center !important;
+                align-items: center !important;
+                margin: auto;
+                flex-direction: column !important;
+            }
         }
     </style>
 </head>
