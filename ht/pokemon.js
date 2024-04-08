@@ -32,8 +32,9 @@ async function pokemonIndex() {
     // console.log(index);
   }
 }
-
-pokemonIndex();
+window.onload = function () {
+  pokemonIndex();
+};
 
 // 1 function
 async function pokemonData(id) {
@@ -91,7 +92,7 @@ function hex2RGB(hex) {
   return colour;
 }
 
-inputSearchField.addEventListener("keyup", (e) => {
+inputSearchField.addEventListener("input", (e) => {
   let filter = document.getElementsByClassName("card");
 
   let pokeArray = Array.from(filter);
@@ -117,7 +118,6 @@ filterByTypeBtn.addEventListener("click", (e) => {
       ele.style.display = "none";
     }
   });
-
 });
 
 // selectType.addEventListener("change", (e) => {
