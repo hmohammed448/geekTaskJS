@@ -4,8 +4,7 @@ if (userInformation === null) {
   printEnterValue();
 } else {
   let userData = JSON.parse(userInformation);
-  let forms = (document.querySelector(".form").innerHTML =
-    showUserData(userData));
+  document.querySelector(".form").innerHTML = showUserData(userData);
 
   // if getElementByClassName is used then use below method
   // let forms = document.getElementByClassName("form");
