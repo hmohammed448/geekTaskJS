@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github API</title>
+</head>
+
+<body>
+    <h1>api call</h1>
+    <input type="text" id="inputText">
+    <button id="btn">Search</button>
+    <div id="container"></div>
+
+
+    <script>
+        async function fetchData() {
+            let inputText = document.querySelector("#inputText").value;
+            let response = await fetch(`https://api.github.com/users/${inputText}`);
+            let data = await response.json();
+            console.log(data);
+        }
+
+        document.getElementById("btn").addEventListener("click", fetchData)
+
+    </script>
+</body>
+
+</html>
