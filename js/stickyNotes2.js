@@ -62,6 +62,9 @@ function createNote() {
     element.addEventListener("click", saveEditText);
   });
 
+  // Attach event listener to the newly created note
+  // createCard.addEventListener("click", handleNoteActions);
+
   inputField.value = "";
   textAreaValue.value = "";
 }
@@ -70,16 +73,39 @@ document.querySelector("button").addEventListener("click", createNote);
 // Event handler for "editTextArea" field
 function editTextArea(event) {
   let ele = event.target.parentNode.parentNode.parentNode.children[1];
-  console.log(ele.removeAttribute("readonly"));
-  console.log(ele.setAttribute("cols", "30"));
-  console.log(ele.setAttribute("rows", "10"));
+  ele.removeAttribute("readonly");
+  ele.setAttribute("cols", "30");
+  ele.setAttribute("rows", "10");
   ele.style.background = "#ffffff";
 }
 // Event handler for "saveEditText" field
 function saveEditText(event) {
   let ele = event.target.parentNode.parentNode.parentNode.children[1];
   ele.style.background = "transparent";
-  console.log(ele.removeAttribute("cols"));
-  console.log(ele.removeAttribute("rows"));
-  console.log(ele.setAttribute("readonly", ""));
+  ele.removeAttribute("cols");
+  ele.removeAttribute("rows");
+  ele.setAttribute("readonly", "");
 }
+
+// 2nd approach remove 71 - 85 and 45 - 63
+// Event handler for note actions (edit, save, cancel)
+// function handleNoteActions(event) {
+//   const target = event.target;
+//   const parentNote = target.closest(".notelist");
+
+//   if (!parentNote) return; // Ignore clicks outside notes
+
+//   if (target.classList.contains("edit")) {
+//       const textArea = parentNote.querySelector(".textAreaInput");
+//       textArea.removeAttribute("readonly");
+//       textArea.setAttribute("cols", "30");
+//       textArea.setAttribute("rows", "10");
+//   } else if (target.classList.contains("save")) {
+//       const textArea = parentNote.querySelector(".textAreaInput");
+//       textArea.removeAttribute("cols");
+//       textArea.removeAttribute("rows");
+//       textArea.setAttribute("readonly", "");
+//   } else if (target.classList.contains("cancel")) {
+//       parentNote.remove();
+//   }
+// }
