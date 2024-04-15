@@ -8,7 +8,7 @@ async function fetchData() {
   //   dsggrwwt
   userDataDisplay(data);
   userName.value = "";
-//   console.log(data);
+  //   console.log(data);
 }
 btn.addEventListener("click", fetchData);
 
