@@ -139,6 +139,15 @@
             opacity: 0.7;
 
         }
+
+        #hide {
+            display: none;
+            font-weight: 500;
+        }
+
+        #hide>span {
+            color: red;
+        }
     </style>
 </head>
 
@@ -150,65 +159,9 @@
             <input type="text" placeholder="Search Github Username">
             <button>Search</button>
         </div>
+        <p id="hide"><span>User Not Found!</span> Please enter correct username</p>
         <div class="display bord-gray">
             Please enter your Github username in search...
-            <!-- <div class="user-card"> -->
-            <!-- <div class="loader">
-                    <div class="head d-flex center">
-                        <img src="https://avatars.githubusercontent.com/u/101665407?v=4" alt="Mohammed Hussain"
-                            class="photo">
-                        <div class="flexAll">
-                            <div>
-                                <h1 class="name fw-bold">Mohammed Hussain</h1>
-                                <a href="https://github.com/hmohammed448" class="username"
-                                    target="_blank">@hmohammed448</a>
-                            </div>
-                            <div>
-                                <p class="joined">Joined 3/15/2022</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="details">
-                    <p class="bio">Hi 👋, I'm Mohammed Hussain</p>
-                    <ul class="card d-flex between center">
-                        <li>
-                            <h6 class="mb-2">Repos</h6>
-                            <span class="fw-bold">9</span>
-                        </li>
-                        <li>
-                            <h6 class="mb-2">Followers</h6>
-                            <span class="fw-bold">0</span>
-                        </li>
-                        <li>
-                            <h6 class="mb-2">Following</h6>
-                            <span class="fw-bold">1</span>
-                        </li>
-                    </ul>
-                    <div class="links flexAll">
-                        <ul>
-                            <li>
-                                <i class="fas fa-fw fa-map-marked-alt"></i>
-                                <span>Kota</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-fw fa-link"></i>
-                                <span> https://www.linkedin.com/in/akhil-sh06/</span>
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>
-                                <i class="fab fa-fw fa-twitter"></i>
-                                <span>-</span>
-                            </li>
-                            <li>
-                                <i class="fas fa-fw fa-building"></i>
-                                <span>Physics Wallah</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div> -->
-            <!-- </div> -->
         </div>
     </div>
     <script src="../js/githubFetchUser.js"></script>

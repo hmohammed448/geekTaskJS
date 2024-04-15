@@ -5,23 +5,30 @@ async function fetchData() {
   let inp = userName.value;
   let response = await fetch(`https://api.github.com/users/${inp}`);
   let data = await response.json();
+  //   dsggrwwt
   userDataDisplay(data);
   userName.value = "";
-  console.log(data);
+//   console.log(data);
 }
 btn.addEventListener("click", fetchData);
 
 let display = document.querySelector(".display");
 function userDataDisplay(data) {
-  let d = data.created_at;
-  let arr = d.split("T");
-  let splitArr = arr[0].split("-");
-  let splitArrAgain = splitArr;
-  //   console.log(splitArrAgain);
-  display.innerHTML = "";
-  let userCard = document.createElement("div");
-  userCard.classList.add("user-card");
-  userCard.innerHTML = `<div class="loader">
+  if (data.message == "Not Found") {
+    userName.value = "";
+    display.innerHTML = "Please enter your Github username in search...";
+    return (document.querySelector("#hide").style.display = "block");
+  } else {
+    document.querySelector("#hide").style.display = "none";
+    let d = data.created_at;
+    let arr = d.split("T");
+    let splitArr = arr[0].split("-");
+    let splitArrAgain = splitArr;
+    //   console.log(splitArrAgain);
+    display.innerHTML = "";
+    let userCard = document.createElement("div");
+    userCard.classList.add("user-card");
+    userCard.innerHTML = `<div class="loader">
       <div class="head d-flex center">
           <img src="${data.avatar_url}" alt="${data.name}"
               class="photo">
@@ -83,5 +90,6 @@ function userDataDisplay(data) {
       </div>
   </div>`;
 
-  return display.appendChild(userCard);
+    return display.appendChild(userCard);
+  }
 }
