@@ -10,7 +10,6 @@ async function showImage(n) {
 
     let div = document.createElement("div");
     div.className = "one";
-    div.setAttribute("data-scroll-direction", "left");
     div.innerHTML = `
         <img src="${url}" alt="">
         `;
