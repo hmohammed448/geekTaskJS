@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Save TextArea</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Auto Save Textarea</h1>
+        <textarea id="myTextarea" rows="20" cols="40" placeholder="Start typing here..." style="height: 2rem;">
+        </textarea>
+    </div>
+    <script>
+        let textarea = document.querySelector("#myTextarea");
+        let saveText = () => {
+            localStorage.setItem("textarea", textarea.value);
+        };
+        textarea.addEventListener("keyup", saveText);
+
+        let text = localStorage.getItem("textarea");
+        textarea.value = text;
+    </script>
+</body>
+
+</html>

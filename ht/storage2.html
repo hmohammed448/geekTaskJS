@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Robot mono", monospace;
+        }
+
+        .container {
+            margin-top: 3rem !important;
+            width: 500px;
+            border: 1px solid;
+            margin: auto;
+            border-radius: 1rem;
+            background: linear-gradient(#e66465, #9198e5);
+        }
+
+        .container h1,
+        .container .form {
+            margin-top: 1rem;
+        }
+
+        .container .form {
+            margin-bottom: 1rem;
+        }
+
+        .container .form p span {
+            font-weight: 800;
+            font-size: 1.3rem;
+        }
+
+        .form {
+            width: 400px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 style="text-align: center !important;">User Information Card</h1>
+    </div>
+    <script>
+        let cont = document.querySelector(".container");
+        let btn = document.querySelector("button");
+
+        function insertForm() {
+            let dataExist = JSON.parse(localStorage.getItem("userInfo"));
+            if (dataExist) {
+                let createHTML = `<div class="form">
+                        <p class="name"><span>Name : </span></span>${dataExist.name}</p>
+                        <p class="email"><span>Email : </span>${dataExist.email}</p>
+                        <p class="phone"><span>Phone : </span>${dataExist.phone}</p>
+                        <p class="locality"><span>Area : </span>${dataExist.area}</p>
+                    </div>`;
+                cont.insertAdjacentHTML("beforeend", createHTML);
+            } else {
+                // Prompt
+                let name = prompt("Enter Full Name");
+                let email = prompt("Enter Email");
+                let phone = prompt("Enter Phone Number");
+                let area = prompt("Enter Area");
+
+                // Object
+                let info = { name: name, email: email, phone: phone, area: area }
+
+                let value = storeToLocalStorage(info);
+
+                // Create HTML
+                let createHTML = `<div class="form">
+                        <p class="name"><span>Name : </span>${value.name}</p>
+                        <p class="email"><span>Email : </span>${value.email}</p>
+                        <p class="phone"><span>Phone : </span>${value.phone}</p>
+                        <p class="locality"><span>Area : </span>${value.area}</p>
+                    </div>`;
+                cont.insertAdjacentHTML("beforeend", createHTML);
+
+            }
+
+        }
+        function storeToLocalStorage(info) {
+            for (let key in info) {
+                if (info[key] === null) {
+                    console.log(key, "  is null");
+                }
+                if (info[key] === "") {
+                    console.log(key, " is empty");
+                }
+            }
+
+            let user = localStorage.setItem("userInfo", JSON.stringify(info));
+            let userData = JSON.parse(localStorage.getItem("userInfo"));
+            return userData;
+        }
+        insertForm();
+    </script>
+</body>
+
+</html>
