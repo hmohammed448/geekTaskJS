@@ -52,7 +52,7 @@
         let btn = document.querySelector("button");
 
         function insertForm() {
-            let dataExist = JSON.parse(localStorage.getItem("userInfo"));
+            let dataExist = JSON.parse(localStorage.getItem("informationUser"));
             if (dataExist) {
                 let createHTML = `<div class="form">
                         <p class="name"><span>Name : </span></span>${dataExist.name}</p>
@@ -95,8 +95,8 @@
                 }
             }
 
-            let user = localStorage.setItem("userInfo", JSON.stringify(info));
-            let userData = JSON.parse(localStorage.getItem("userInfo"));
+            let user = localStorage.setItem("informationUser", JSON.stringify(info));
+            let userData = JSON.parse(localStorage.getItem("informationUser"));
             return userData;
         }
         insertForm();
