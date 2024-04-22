@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto mono", monospace;
+        }
+
+        .container {
+            width: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column wrap;
+            margin: auto auto;
+            padding-top: 10rem;
+            position: relative;
+        }
+
+        .post {
+            background-color: aquamarine;
+            padding: 2rem;
+            border: none;
+            border-radius: 1rem;
+            margin: 1rem 1rem;
+            min-height: 200px;
+            width: 70%;
+
+        }
+
+        .img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .img>img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .details {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .loader {
+            width: 100%;
+            height: 4.8px;
+            display: inline-block;
+            position: relative;
+            background: rgba(255, 255, 255, 0.15);
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .loader::after {
+            content: '';
+            box-sizing: border-box;
+            width: 0;
+            height: 4.8px;
+            background: #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: animFw 5s linear infinite;
+        }
+
+        .fa-quote-right {
+            left: 40px;
+        }
+
+        .fa-quote {
+            color: #fff;
+            font-size: 28px;
+            position: absolute;
+            top: 70px;
+        }
+
+        @keyframes animFw {
+            0% {
+                width: 0;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+    </div>
+    <script src="./testscript.js"></script>
+</body>
+
+</html>
+<!-- https://rlavinsh.github.io/feedback/ -->
