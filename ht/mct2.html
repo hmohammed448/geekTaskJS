@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Interview 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto mono", monospace;
+        }
+
+        body {
+            background-color: aquamarine;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 80vw;
+            margin: auto auto;
+        }
+
+        .box {
+            margin-top: 5rem;
+            width: 350px;
+            color: white;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .top {
+            background-color: #3E57DB;
+            padding: 2rem;
+            border-top-left-radius: 0.5rem;
+            border-top-right-radius: 0.5rem;
+        }
+
+        h1 {
+            font-weight: 700;
+            font-size: large;
+            margin-top: 1rem;
+        }
+
+        .top input {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 3rem;
+            width: 100%;
+            margin-top: 1rem;
+            padding: 0.5rem;
+            border: none;
+            outline: none;
+            padding-left: 1rem;
+        }
+
+        .bottom {
+            background-color: rgb(246, 246, 246);
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+            overflow-y: scroll;
+            max-height: 450px;
+            color: black
+        }
+
+        .userData {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            padding-top: 1rem;
+            border-bottom: 1px solid rgb(123, 123, 123);
+        }
+
+        .img {
+            width: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .details {
+            width: 68%;
+        }
+
+        img {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="top">
+                <h1>Live User Filter</h1>
+                <small>Search by name and/or location</small>
+                <input type="text" placeholder="Search" id="inpText">
+            </div>
+            <div class="bottom">
+            </div>
+        </div>
+    </div>
+    <script>
+        let bottomBox = document.querySelector(".bottom");
+        let input = document.querySelector("#inpText");
+        let users = document.getElementsByClassName("user");
+
+        async function fetchData() {
+            try {
+                let response = await fetch("https://randomuser.me/api?results=50");
+                let data = await response.json();
+                data?.results?.forEach((el) => {
+                    let createDiv = document.createElement("div");
+                    createDiv.className = "user";
+                    createDiv.innerHTML = `<div class="userData">
+            <div class="img">
+            <img src="${el.picture.medium}" alt="">
+            </div>
+            <div class="details">
+            <div class="name">${el.name.title} ${el.name.first} ${el.name.last}</div>
+            <div class="position"><small>${el.location.city}</small></div>
+            </div></div>`;
+
+                    bottomBox.appendChild(createDiv);
+                });
+            } catch (error) {
+                console.error("Error : ", error);
+            }
+        }
+        fetchData();
+
+        input.addEventListener("input", function () {
+            Array.from(users).forEach((el) => {
+                let searchItem = input.value.toLowerCase();
+                el.style.display = el
+                    .querySelector(".name")
+                    .innerHTML.toLowerCase()
+                    .includes(searchItem)
+                    ? "block"
+                    : "none";
+            });
+        });
+    </script>
+</body>
+
+</html>
